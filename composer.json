@@ -1,0 +1,22 @@
+{
+    "name": "bscheshir/yii-bootstrap-datetimepicker",
+    "description": "Yii extension wrapper for http://tarruda.github.io/bootstrap-datetimepicker/ https://github.com/tarruda/bootstrap-datetimepicker/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BSCheshir",
+            "email": "bscheshir@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "http://github.com/bscheshirwork/yii-bootstrap-datetimepicker"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "tarruda/bootstrap-datetimepicker": "dev-master"
+    }
+}
+
