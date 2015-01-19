@@ -28,8 +28,7 @@ class DateTimePicker extends CInputWidget
         $ds = DIRECTORY_SEPARATOR;
         //assets/js/
         //assets/css/
-        $bujs = Yii::app()->assetManager->publish(__DIR__ . "{$ds}assets{$ds}js");
-        $bucss = Yii::app()->assetManager->publish(__DIR__ . "{$ds}assets{$ds}css");
+        $bu = Yii::app()->assetManager->publish(__DIR__ . "{$ds}assets");
         $cs = Yii::app()->clientScript;
         if ($scriptPosition === null)
             $scriptPosition = $cs->coreScriptPosition;
@@ -37,10 +36,10 @@ class DateTimePicker extends CInputWidget
         //bootstrap-datetimepicker.js
         //locales/bootstrap-datetimepicker.ru.js
         //bootstrap-datetimepicker.min.css
-        $cs->registerScriptFile($bujs . '/bootstrap-datetimepicker' . (YII_DEBUG ? '' : '.min') . '.js', $scriptPosition);
+        $cs->registerScriptFile($bu . "{$ds}js{$ds}bootstrap-datetimepicker" . (YII_DEBUG ? '' : '.min') . '.js', $scriptPosition);
         //approximate
-        $cs->registerScriptFile($bujs . '/bootstrap-datetimepicker' . (Yii::app()->language) . '.js', $scriptPosition);
-        $cs->registerCssFile($bucss . '/bootstrap-datetimepicker' . 'min' . '.css');
+        //$cs->registerScriptFile($bu . "{$ds}js{$ds}locales{$ds}bootstrap-datetimepicker." . (Yii::app()->language) . '.js', $scriptPosition);
+        $cs->registerCssFile($bu . "{$ds}css{$ds}bootstrap-datetimepicker" . '.min' . '.css');
     }
 
     public function run()
@@ -67,7 +66,7 @@ class DateTimePicker extends CInputWidget
             "jQuery('{$this->selector}').datetimepicker({$options})"
         );
 
-        echo '<div class="input-append bootstrap-datetimepicker">' .
+        echo '<div class="input-append bootstrap-datetimepicker-widget">' .
             CHtml::textField($this->name, $this->value, $this->htmlOptions) .
             '<span class="add-on">
             <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
