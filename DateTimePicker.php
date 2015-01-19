@@ -10,7 +10,7 @@ class DateTimePicker extends CInputWidget
     /**
      * @var array
      */
-    public $options = array();
+    public $options = [];
 
     /**
      * http://www.yiiframework.com/doc/api/1.1/CClientScript#registerScriptFile-detail
@@ -38,7 +38,7 @@ class DateTimePicker extends CInputWidget
         //bootstrap-datetimepicker.min.css
         $cs->registerScriptFile($bu . "{$ds}js{$ds}bootstrap-datetimepicker" . (YII_DEBUG ? '' : '.min') . '.js', $scriptPosition);
         //approximate
-        //$cs->registerScriptFile($bu . "{$ds}js{$ds}locales{$ds}bootstrap-datetimepicker." . (Yii::app()->language) . '.js', $scriptPosition);
+        $cs->registerScriptFile($bu . "{$ds}js{$ds}locales{$ds}bootstrap-datetimepicker." . (Yii::app()->getLanguage()) . '.js', $scriptPosition);
         $cs->registerCssFile($bu . "{$ds}css{$ds}bootstrap-datetimepicker" . '.min' . '.css');
     }
 
@@ -58,18 +58,21 @@ class DateTimePicker extends CInputWidget
             unset($this->htmlOptions['value']);
         }
 
+        if (!isset($this->htmlOptions['data-format']))
+            $this->htmlOptions['data-format']="dd/MM/yyyy hh:mm:ss";
+
         $this->htmlOptions['autocomplete'] = 'off';
 
         self::initClientScript($this->scriptPosition);
         $options = $this->options !== null ? CJavaScript::encode($this->options) : '';
         Yii::app()->clientScript->registerScript(__CLASS__ . '#' . $this->id,
-            "jQuery('{$this->selector}').datetimepicker({$options})"
+            "jQuery('{$this->selector}_h').datetimepicker({$options})"
         );
 
-        echo '<div class="input-append bootstrap-datetimepicker-widget">' .
+        echo '<div class="input-append" id="'.$this->id.'_h">' .
             CHtml::textField($this->name, $this->value, $this->htmlOptions) .
             '<span class="add-on">
-            <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-            </span></div>';
+            <i class="icon-calendar" data-date-icon="icon-calendar" data-time-icon="icon-time">
+            </i></span></div>';
     }
 }
