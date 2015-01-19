@@ -11,6 +11,10 @@
     "repositories": [
         {
             "type": "git",
+            "url": "https://github.com/tarruda/bootstrap-datetimepicker"
+        },
+        {
+            "type": "git",
             "url": "http://github.com/bscheshirwork/yii-bootstrap-datetimepicker"
         }
     ],
