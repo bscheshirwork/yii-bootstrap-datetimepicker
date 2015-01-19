@@ -11,16 +11,11 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/tarruda/bootstrap-datetimepicker"
-        },
-        {
-            "type": "git",
             "url": "http://github.com/bscheshirwork/yii-bootstrap-datetimepicker"
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "tarruda/bootstrap-datetimepicker": "dev-master"
+        "php": ">=5.3.3"
     }
 }
 

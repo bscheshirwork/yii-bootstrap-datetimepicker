@@ -26,23 +26,20 @@ class DateTimePicker extends CInputWidget
     public static function initClientScript($scriptPosition = null)
     {
         $ds = DIRECTORY_SEPARATOR;
-        //bootstrap-datetimepicker/build/js/
-        //bootstrap-datetimepicker/build/css/
-        if (YII_DEBUG)
-            $bujs = Yii::app()->assetManager->publish(dirname(__FILE__) . "{$ds}..{$ds}..{$ds}tarruda{$ds}bootstrap-datetimepicker{$ds}src{$ds}js");
-        else
-            $bujs = Yii::app()->assetManager->publish(dirname(__FILE__) . "{$ds}..{$ds}..{$ds}tarruda{$ds}bootstrap-datetimepicker{$ds}build{$ds}js");
-        //duplicate if dev
-        $langjs = Yii::app()->assetManager->publish(dirname(__FILE__) . "{$ds}..{$ds}..{$ds}tarruda{$ds}bootstrap-datetimepicker{$ds}src{$ds}js{$ds}locales");
-        $bucss = Yii::app()->assetManager->publish(dirname(__FILE__) . "{$ds}..{$ds}..{$ds}tarruda{$ds}bootstrap-datetimepicker{$ds}build{$ds}css");
+        //assets/js/
+        //assets/css/
+        $bujs = Yii::app()->assetManager->publish(__DIR__ . "{$ds}assets{$ds}js");
+        $bucss = Yii::app()->assetManager->publish(__DIR__ . "{$ds}assets{$ds}css");
         $cs = Yii::app()->clientScript;
         if ($scriptPosition === null)
             $scriptPosition = $cs->coreScriptPosition;
         //bootstrap-datetimepicker.min.js
+        //bootstrap-datetimepicker.js
+        //locales/bootstrap-datetimepicker.ru.js
         //bootstrap-datetimepicker.min.css
         $cs->registerScriptFile($bujs . '/bootstrap-datetimepicker' . (YII_DEBUG ? '' : '.min') . '.js', $scriptPosition);
         //approximate
-        $cs->registerScriptFile($langjs . '/bootstrap-datetimepicker' . (Yii::app()->language) . '.js', $scriptPosition);
+        $cs->registerScriptFile($bujs . '/bootstrap-datetimepicker' . (Yii::app()->language) . '.js', $scriptPosition);
         $cs->registerCssFile($bucss . '/bootstrap-datetimepicker' . 'min' . '.css');
     }
 
