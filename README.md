@@ -17,14 +17,19 @@ Next, call the widget / Вызываем виджет:
 
 ```php
 $this->widget('DateTimePicker', [
-    'model' => $model,
+    'model'     => $model,
     'attribute' => 'Date',
-    // some options, see more at / Немного опций, см. https://github.com/tarruda/bootstrap-datetimepicker/ http://tarruda.github.io/bootstrap-datetimepicker/
-    'options' => [
-        'showMeridian'=>false,
-        'minuteStep'=>5,
-        'showInputs'=>false,
-        'disableFocus'=>true,
+    // опции см. http://tarruda.github.io/bootstrap-datetimepicker/
+    'options'   => [
+        'language' => 'ru',
+        'format'   => 'yyyy-MM-dd hh:mm:ss',//yyyy-MM-dd HH:mm:ss
+//maskInput: true,           // disables the text input mask
+//pickDate: true,            // disables the date picker
+//pickTime: true,            // disables de time picker
+//pick12HourFormat: false,   // enables the 12-hour format time picker
+//pickSeconds: true,         // disables seconds in the time picker
+//startDate: -Infinity,      // set a minimum date
+//endDate: Infinity          // set a maximum date
     ],
 ]);
 ```
