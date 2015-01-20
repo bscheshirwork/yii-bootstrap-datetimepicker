@@ -39,7 +39,7 @@ class DateTimePicker extends CInputWidget
         $cs->registerScriptFile($bu . "{$ds}js{$ds}bootstrap-datetimepicker" . (YII_DEBUG ? '' : '.min') . '.js', $scriptPosition);
         //approximate
         $cs->registerScriptFile($bu . "{$ds}js{$ds}locales{$ds}bootstrap-datetimepicker." . (Yii::app()->getLanguage()) . '.js', $scriptPosition);
-        $cs->registerCssFile($bu . "{$ds}css{$ds}bootstrap-datetimepicker" . '.min' . '.css');
+        $cs->registerCssFile($bu . "{$ds}css{$ds}bootstrap-datetimepicker" . (YII_DEBUG ? '' : '.min') . '.css');
     }
 
     public function run()
@@ -59,7 +59,7 @@ class DateTimePicker extends CInputWidget
         }
 
         if (!isset($this->htmlOptions['data-format']))
-            $this->htmlOptions['data-format']="dd/MM/yyyy hh:mm:ss";
+            $this->htmlOptions['data-format'] = "dd/MM/yyyy hh:mm:ss";
 
         $this->htmlOptions['autocomplete'] = 'off';
 
@@ -69,7 +69,7 @@ class DateTimePicker extends CInputWidget
             "jQuery('{$this->selector}_h').datetimepicker({$options})"
         );
 
-        echo '<div class="input-append" id="'.$this->id.'_h">' .
+        echo '<div class="input-append" id="' . $this->id . '_h">' .
             CHtml::textField($this->name, $this->value, $this->htmlOptions) .
             '<span class="add-on">
             <i class="icon-calendar" data-date-icon="icon-calendar" data-time-icon="icon-time">
